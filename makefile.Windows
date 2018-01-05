@@ -1,0 +1,34 @@
+all:ask.exe EXT.exe
+	-rm ask.exe
+EXT.exe : main.o aes.o md5.o basicIO.o system.o readkey.o abouttime.o ext.o operation.o users.o
+	g++ -o EXT.exe main.o aes.o md5.o basicIO.o system.o readkey.o abouttime.o ext.o operation.o users.o
+	-rm main.o aes.o md5.o basicIO.o system.o readkey.o abouttime.o ext.o operation.o users.o
+	-rm *.h.gch
+ask.exe : ask.o
+	g++ -o ask.exe ask.o
+	-rm ask.o
+	ask.exe
+ask.o :   ask.cpp
+	g++ -c ask.cpp
+main.o : main.cpp disk.h errorconstances.h switches.h
+	g++ -c main.cpp switches.h
+aes.o : main.cpp aes.h disk.h errorconstances.h switches.h
+	g++ -c aes.cpp switches.h
+md5.o : main.cpp md5.h disk.h errorconstances.h switches.h
+	g++ -c md5.cpp switches.h
+basicIO.o : main.cpp disk.h errorconstances.h switches.h
+	g++ -c basicIO.cpp switches.h
+system.o : main.cpp disk.h errorconstances.h switches.h
+	g++ -c system.cpp switches.h
+readkey.o : main.cpp disk.h errorconstances.h switches.h
+	g++ -c readkey.cpp switches.h
+abouttime.o : main.cpp disk.h errorconstances.h switches.h
+	g++ -c abouttime.cpp switches.h
+ext.o : main.cpp disk.h errorconstances.h switches.h
+	g++ -c ext.cpp switches.h
+operation.o : main.cpp disk.h errorconstances.h switches.h
+	g++ -c operation.cpp switches.h
+users.o : main.cpp disk.h errorconstances.h switches.h
+	g++ -c users.cpp switches.h
+clean : 
+	rm main.o aes.o md5.o basicIO.o system.o readkey.o abouttime.o ext.o operation.o users.o
