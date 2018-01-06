@@ -36,13 +36,13 @@ document.getElementById("float").style="display:display;";
 <h2>
 <ol>
 <p><li><a href="#Capt1">A Brief Introduction to EXT</a></li></p>
-<p><li><a href="#Capt2">Main Parameters</a></li></p>
+<p><li><a href="#Capt2">Main Features</a></li></p>
 <p><li><a href="#Capt3">Requirements</a></li></p>
 <p><li><a href="#Capt4">Starting up</a></li></p>
 <p><li><a href="#Capt5">Usage</a></li></p>
 <p><li><a href="#Capt6">Referrences</a></li></p>
 <p><li><a href="#Capt7">Development</a></li></p>
-<p><li><a href="#Capt8">Reporting bugs</a></li></p>
+<p><li><a href="mailto:w_2014@protonmail.com">Reporting bugs</a></li></p>
 </ol>
 </h2>
 </div>
@@ -59,18 +59,22 @@ document.getElementById("float").style="display:display;";
 <p>Third,4096 blocks containing inode data,each 32 bytes.The inode data shows the information of files(and folders),and points out their data on the disk.</p>
 <p>Fourth,4096 disk blocks,each 4096 bytes.For a folder,it contains its subitems,and for a file it contains its contents.</p>
 <p>Last,16 bytes that server as a hash.It helps check whether the disk has been modified without authentication.</p>
-<p>Also,if you are protection your disk with a password,this helps check whether the password is correct.</p>
+<p>Also,if you are protecting your disk with a password,this helps check whether the password is correct.</p>
 <p>Only Chinese version available now.</p>
 </div>
 <div id="Capt2">
-<p><h2>Main parameters<a href="#Capt0">Back to menu</a></h2></p>
+<p><h2>Main Features<a href="#Capt0">Back to menu</a></h2></p>
 <p><h3>Filesize:</h3></p>
 <p>Each inode is associated with no more than five disk blocks,and each disk block takes 4096 bytes.</p>
 <p>So the size of a file should not exceed 20480 bytes.</p>
-<p>Security:</p>
+<p><h3>Security:</h3></p>
 <p>The disk is encrypted with AES-CTR.I'm trying to keep the influence on speed of encryption low,but when starting up,it takes a long while to scan through the disk,calculating hash of the disk.</p>
 <p>For description,name the bytes 0,1,...</p>
 <p>For the 16 bytes from 16*(n-1) to 16*n-1,we encrypt n with the master key to generate a subkey,and then outputs the subkey exclusive or the plain data.See also <a href=https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR>CTR mode</a>.</p>
+<p><h3>Protection:</h3></p>
+<p>When receiving signal to quit,the program will try to finish the current writing to the block,thus keeps the disk recognizable.</p>
+<p>However,quitting the program during a procedure is still harmful as it may cause data loss,or harm the simulate operation system.</p>
+
 </div>
 <div id="Capt3">
 <p><h2>Requirements<a href="#Capt0">Back to menu</a></h2></p>
@@ -157,10 +161,6 @@ document.getElementById("float").style="display:display;";
 <p><h2>Development:<a href="#Capt0">Back to menu</a></h2></p>
 <p>Most functions are shown in "disk.h".</p>
 <p>Refer to "errorconstances.h" for the meaning of some return values.</p>
-</div>
-<div id="Capt8">
-<p><h2>Reporting bugs:<a href="#Capt0">Back to menu</a></h2></p>
-<a href="http://www.6ziv.cn/EXT/report-bugs">Homepage.</a>
 </div>
 <div id="float">
 <div id="titlebar">
